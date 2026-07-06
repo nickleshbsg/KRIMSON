@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRIMSON Unisex Salon &amp; Academy — Haldwani</title>
+<meta name="description" content="KRIMSON Unisex Salon and Academy — premium hair, skin &amp; bridal services and a certified styling academy in Haldwani, Uttarakhand. Rated 4.7 from 580+ guests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKENS ===================== */
+:root{
+  --crimson: #9E1B32;
+  --crimson-dark: #6E0F22;
+  --crimson-deep: #4A0A1A;
+  --ink: #1B1512;
+  --ivory: #F7F1E6;
+  --bone: #ECE3D2;
+  --gold: #B98B2E;
+  --gold-soft: #D9B872;
+  --white: #FFFDF9;
+
+  --bg: var(--ivory);
+  --bg-alt: var(--bone);
+  --bg-panel: var(--white);
+  --text: var(--ink);
+  --text-soft: #5b524c;
+  --border: rgba(27,21,18,0.12);
+  --shadow: 0 12px 32px rgba(27,21,18,0.10);
+
+  --display: 'Fraunces', serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --radius: 18px;
+  --radius-sm: 10px;
+  --container: 1160px;
+}
+
+html.dark{
+  --bg: #15100E;
+  --bg-alt: #1D1613;
+  --bg-panel: #221A16;
+  --text: #F3EAE0;
+  --text-soft: #C9BBAE;
+  --border: rgba(243,234,224,0.12);
+  --shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .4s ease, color .4s ease;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+button{font-family:inherit;cursor:pointer;}
+input,select,textarea{font-family:inherit;}
+h1,h2,h3,h4{font-family:var(--display);margin:0;font-weight:600;letter-spacing:-0.01em;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--crimson);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+html.dark .eyebrow{color:var(--gold-soft);}
+.section{padding:96px 0;}
+.section-head{max-width:640px;margin-bottom:56px;}
+.section-head h2{font-size:clamp(30px,4vw,44px);margin-top:10px;}
+.section-head p{color:var(--text-soft);font-size:17px;margin-top:14px;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 28px;border-radius:999px;font-weight:600;font-size:14.5px;
+  border:1px solid transparent; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--crimson);color:var(--white);}
+.btn-primary:hover{background:var(--crimson-dark); box-shadow:0 10px 24px rgba(158,27,50,.35);}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border);}
+.btn-ghost:hover{border-color:var(--crimson);color:var(--crimson);}
+.btn-gold{background:var(--gold);color:var(--white);}
+.btn-gold:hover{background:#9c7423;}
+.btn-sm{padding:9px 18px;font-size:13px;}
+.btn-block{width:100%;}
+.pill{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em;
+  padding:6px 12px; border-radius:999px; border:1px solid var(--border);
+  display:inline-flex; align-items:center; gap:6px; color:var(--text-soft);
+  background:var(--bg-panel);
+}
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ===================== PRELOADER ===================== */
+#preloader{
+  position:fixed; inset:0; background:var(--crimson-deep); z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+#preloader.hide{opacity:0; visibility:hidden;}
+.seal-spin{
+  width:64px;height:64px;border-radius:50%;
+  border:2px solid rgba(217,184,114,.35); border-top-color:var(--gold-soft);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ===================== HEADER ===================== */
+header{
+  position:sticky; top:0; z-index:500;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:var(--container); margin:0 auto;}
+.brand{display:flex; align-items:center; gap:10px;}
+.brand-mark{
+  width:40px;height:40px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--crimson), var(--crimson-deep));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold-soft); font-family:var(--display); font-weight:700; font-size:18px;
+  border:1px solid rgba(217,184,114,.5);
+}
+.brand-text .en{font-family:var(--display); font-size:20px; font-weight:700; letter-spacing:.02em; line-height:1;}
+.brand-text .hi{font-size:11px; color:var(--text-soft); letter-spacing:.02em;}
+nav.links{display:flex; gap:28px; align-items:center;}
+nav.links a{font-size:14px; font-weight:500; color:var(--text-soft); transition:color .2s ease;}
+nav.links a:hover{color:var(--crimson);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.icon-btn{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;background:var(--bg-panel);
+  transition:border-color .2s ease;
+}
+.icon-btn:hover{border-color:var(--crimson);}
+.burger{display:none;}
+@media (max-width:960px){
+  nav.links{position:fixed; top:73px; left:0; right:0; bottom:0; background:var(--bg);
+    flex-direction:column; padding:32px 24px; gap:22px; transform:translateX(100%);
+    transition:transform .35s ease; overflow-y:auto;}
+  nav.links.open{transform:translateX(0);}
+  nav.links a{font-size:20px;}
+  .burger{display:flex;}
+}
+
+/* ===================== HERO ===================== */
+.hero{
+  position:relative; overflow:hidden;
+  background: linear-gradient(160deg, var(--crimson-deep) 0%, var(--crimson-dark) 45%, var(--crimson) 100%);
+  color:var(--white); padding:120px 0 90px;
+}
+.hero::before{
+  content:''; position:absolute; inset:0;
+  background-image: radial-gradient(circle, rgba(217,184,114,.18) 1px, transparent 1.4px);
+  background-size:26px 26px; opacity:.5; pointer-events:none;
+}
+.hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(38px,5.4vw,64px); color:var(--white); line-height:1.05;}
+.hero h1 em{font-style:italic; color:var(--gold-soft);}
+.hero p.lead{margin-top:22px; font-size:18px; color:rgba(255,253,249,.82); max-width:520px;}
+.hero-badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+.hero-badges .pill{background:rgba(255,253,249,.08); border-color:rgba(255,253,249,.25); color:rgba(255,253,249,.9);}
+.hero-cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+.hero .btn-ghost{border-color:rgba(255,253,249,.4); color:var(--white);}
+.hero .btn-ghost:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+
+.hero-seal-wrap{position:relative; display:flex; justify-content:center;}
+.seal{
+  width:min(340px,80vw); aspect-ratio:1; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #7a1526, var(--crimson-deep) 70%);
+  border:2px solid var(--gold-soft);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  box-shadow:0 30px 60px rgba(0,0,0,.35);
+  text-align:center;
+}
+.seal .k{font-family:var(--display); font-size:56px; color:var(--gold-soft); font-weight:700;}
+.seal .rating{font-family:var(--mono); font-size:15px; color:var(--white);}
+.seal .stars{color:var(--gold-soft); font-size:14px; letter-spacing:2px;}
+.seal .sub{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,253,249,.65);}
+.seal-ring{
+  position:absolute; inset:-14px; border-radius:50%; border:1px dashed rgba(217,184,114,.4);
+  animation:ringspin 22s linear infinite;
+}
+@keyframes ringspin{to{transform:rotate(360deg);}}
+
+/* ===================== TRUST STRIP ===================== */
+.trust{background:var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+.trust-wrap{display:flex; flex-wrap:wrap; gap:36px; justify-content:space-between; padding:26px 0;}
+.trust-item{display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--text-soft); flex:1 1 180px;}
+.trust-item strong{color:var(--text); font-family:var(--mono); font-size:14px;}
+.trust-item svg{flex-shrink:0; color:var(--crimson);}
+html.dark .trust-item svg{color:var(--gold-soft);}
+
+/* ===================== ABOUT ===================== */
+.about-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:start;}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;}}
+.about-visual{
+  border-radius:var(--radius); background:linear-gradient(150deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+  aspect-ratio:4/5; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:28px;
+}
+.about-visual svg{position:absolute; opacity:.16; top:-10%; right:-10%; width:70%; height:auto;}
+.about-visual .cap{position:relative; z-index:1; color:var(--white);}
+.about-visual .cap .eyebrow{color:var(--gold-soft);}
+.about-visual .cap h3{color:var(--white); font-size:22px; margin-top:6px;}
+.about-copy p{color:var(--text-soft); margin:0 0 18px; font-size:16px;}
+.about-list{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;}
+.about-list li{
+  display:flex; gap:12px; align-items:flex-start; padding:16px; border:1px solid var(--border);
+  border-radius:var(--radius-sm); background:var(--bg-panel);
+}
+.about-list li svg{color:var(--crimson); flex-shrink:0; margin-top:2px;}
+html.dark .about-list li svg{color:var(--gold-soft);}
+.about-list li h4{font-size:15px; margin-bottom:4px;}
+.about-list li p{font-size:13.5px; color:var(--text-soft); margin:0;}
+
+/* ===================== SERVICES ===================== */
+.tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;}
+.tab-btn{
+  padding:9px 18px; border-radius:999px; border:1px solid var(--border); background:var(--bg-panel);
+  font-size:13.5px; font-weight:600; color:var(--text-soft); transition:all .2s ease;
+}
+.tab-btn.active,.tab-btn:hover{background:var(--crimson); color:var(--white); border-color:var(--crimson);}
+.grid-services{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:22px;}
+.card{
+  background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius);
+  padding:26px; transition:transform .3s ease, box-shadow .3s ease;
+}
+.card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
+.card-icon{
+  width:48px;height:48px;border-radius:50%; background:var(--bg-alt); display:flex;align-items:center;justify-content:center;
+  color:var(--crimson); margin-bottom:16px;
+}
+html.dark .card-icon{color:var(--gold-soft);}
+.card h3{font-size:19px;}
+.card p.desc{color:var(--text-soft); font-size:14px; margin:8px 0 18px;}
+.card-meta{display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:1px dashed var(--border);}
+.card-meta .price{font-family:var(--mono); font-weight:600; font-size:16px;}
+.card-meta .dur{font-size:12px; color:var(--text-soft);}
+
+/* ===================== ACADEMY ===================== */
+.academy{background:var(--bg-alt);}
+.academy-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;}
+.academy-card{background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:24px; position:relative;}
+.academy-card .num{font-family:var(--mono); font-size:12px; color:var(--gold); position:absolute; top:20px; right:22px;}
+.academy-card h4{font-size:17px; margin-bottom:8px; padding-right:36px;}
+.academy-card p{font-size:13.5px; color:var(--text-soft); margin:0;}
+
+/* ===================== GALLERY ===================== */
+.gallery-grid{columns:4 260px; column-gap:18px;}
+@media (max-width:700px){.gallery-grid{columns:2 160px;}}
+.g-item{break-inside:avoid; margin-bottom:18px; border-radius:var(--radius-sm); overflow:hidden; cursor:pointer; position:relative; border:1px solid var(--border);}
+.g-item .tile{
+  width:100%; aspect-ratio: var(--ar,1); display:flex; align-items:center; justify-content:center;
+  background:var(--tile-bg); color:rgba(255,253,249,.85); font-family:var(--display); font-size:15px; text-align:center; padding:14px;
+}
+.g-item .label{position:absolute; bottom:0; left:0; right:0; padding:10px 12px; font-size:11.5px; font-family:var(--mono);
+  background:linear-gradient(to top, rgba(0,0,0,.55), transparent); color:#fff; opacity:0; transition:opacity .25s ease;}
+.g-item:hover .label{opacity:1;}
+.hidden-g{display:none !important;}
+
+/* Lightbox */
+.lightbox{position:fixed; inset:0; background:rgba(10,7,6,.9); z-index:2000; display:none; align-items:center; justify-content:center; padding:32px;}
+.lightbox.open{display:flex;}
+.lightbox-inner{max-width:560px; width:100%; background:var(--crimson-deep); border-radius:var(--radius); padding:40px; text-align:center; color:#fff; position:relative;}
+.lightbox-close{position:absolute; top:14px; right:16px; background:none; border:none; color:#fff; font-size:22px;}
+
+/* ===================== TEAM ===================== */
+.grid-team{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:22px;}
+.team-card{text-align:center; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:26px 20px;}
+.avatar{
+  width:84px; height:84px; border-radius:50%; margin:0 auto 14px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(150deg, var(--crimson), var(--crimson-dark)); color:var(--gold-soft); font-family:var(--display); font-size:26px; font-weight:700;
+}
+.team-card h4{font-size:16.5px;}
+.team-card .role{font-size:12.5px; color:var(--crimson); font-family:var(--mono); margin:4px 0 10px;}
+html.dark .team-card .role{color:var(--gold-soft);}
+.team-card p.exp{font-size:13px; color:var(--text-soft); margin:0 0 16px;}
+.social-row{display:flex; justify-content:center; gap:8px; margin-bottom:14px;}
+.social-row a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border); display:flex;align-items:center;justify-content:center;}
+
+/* ===================== PRICING ===================== */
+.price-table{width:100%; border-collapse:collapse; background:var(--bg-panel); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);}
+.price-table th{text-align:left; font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-soft); padding:16px 20px; border-bottom:1px solid var(--border);}
+.price-table td{padding:16px 20px; border-bottom:1px solid var(--border); font-size:14.5px;}
+.price-table tr:last-child td{border-bottom:none;}
+.price-table td.p{font-family:var(--mono); font-weight:600;}
+.price-table tr:hover{background:var(--bg-alt);}
+.table-scroll{overflow-x:auto;}
+
+/* ===================== TESTIMONIALS ===================== */
+.testi-track-wrap{overflow:hidden;}
+.testi-track{display:flex; gap:22px; transition:transform .5s ease;}
+.testi-card{
+  min-width:340px; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:28px;
+}
+.testi-stars{color:var(--gold); letter-spacing:2px; margin-bottom:12px;}
+.testi-card p{font-size:15px; color:var(--text-soft);}
+.testi-foot{display:flex; align-items:center; gap:12px; margin-top:18px;}
+.testi-foot .av{width:38px;height:38px;border-radius:50%;background:var(--crimson); color:#fff; display:flex;align-items:center;justify-content:center; font-family:var(--mono); font-size:13px;}
+.testi-foot .name{font-weight:600; font-size:14px;}
+.testi-foot .meta{font-size:12px; color:var(--text-soft);}
+.testi-nav{display:flex; gap:10px; margin-top:24px;}
+
+/* ===================== FAQ ===================== */
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{
+  width:100%; text-align:left; background:none; border:none; padding:22px 0; display:flex; justify-content:space-between; align-items:center;
+  font-size:16px; font-weight:600; color:var(--text);
+}
+.faq-q svg{transition:transform .3s ease; flex-shrink:0;}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+.faq-a p{padding:0 0 22px; color:var(--text-soft); font-size:14.5px; max-width:640px;}
+
+/* ===================== BOOKING ===================== */
+.booking{background:var(--bg-alt);}
+.book-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media (max-width:760px){.book-grid{grid-template-columns:1fr;}}
+.field{display:flex; flex-direction:column; gap:6px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:12.5px; font-weight:600; color:var(--text-soft);}
+.field input, .field select, .field textarea{
+  padding:13px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-panel); color:var(--text); font-size:14.5px;
+}
+.field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--crimson); outline-offset:1px;}
+.service-checks{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px;}
+.service-check{
+  display:flex; align-items:flex-start; gap:10px; padding:12px 14px; border-radius:var(--radius-sm);
+  border:1px solid var(--border); background:var(--bg-panel); cursor:pointer; transition:border-color .2s ease, background .2s ease;
+}
+.service-check:hover{border-color:var(--crimson);}
+.service-check.checked{border-color:var(--crimson); background:color-mix(in srgb, var(--crimson) 8%, var(--bg-panel));}
+.service-check input{margin-top:3px; accent-color:var(--crimson);}
+.service-check span{font-size:13.5px; line-height:1.35;}
+.service-check span small{display:block; color:var(--text-soft); font-family:var(--mono); font-size:11.5px; margin-top:2px;}
+.service-summary{margin-top:12px; font-size:13.5px; color:var(--text-soft); padding:10px 14px; border:1px dashed var(--border); border-radius:var(--radius-sm);}
+.slots{display:flex; flex-wrap:wrap; gap:8px;}
+.slot{padding:8px 14px; border-radius:999px; border:1px solid var(--border); font-size:13px; background:var(--bg-panel); color:var(--text-soft);}
+.slot.taken{opacity:.4; text-decoration:line-through; cursor:not-allowed;}
+.slot.selected{background:var(--crimson); color:#fff; border-color:var(--crimson);}
+.booking-form-card{background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:34px; box-shadow:var(--shadow);}
+.form-msg{font-size:13.5px; padding:12px 14px; border-radius:var(--radius-sm); margin-bottom:18px; display:none;}
+.form-msg.show{display:block;}
+.form-msg.ok{background:rgba(60,140,90,.12); color:#3c8c5a; border:1px solid rgba(60,140,90,.3);}
+.form-msg.err{background:rgba(200,60,60,.1); color:#c83c3c; border:1px solid rgba(200,60,60,.3);}
+
+/* ===================== ACCOUNT / DASHBOARD ===================== */
+.account-tabs{display:flex; gap:10px; margin-bottom:26px;}
+.dash-card{background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+.dash-stat{display:flex; flex-direction:column; gap:6px;}
+.dash-stat .num{font-family:var(--display); font-size:32px;}
+.dash-stat .lbl{font-size:12.5px; color:var(--text-soft); font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em;}
+.dash-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:26px;}
+.appt-row{display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--border); font-size:14px; gap:12px; flex-wrap:wrap;}
+.appt-row:last-child{border-bottom:none;}
+.status-tag{font-family:var(--mono); font-size:11px; padding:4px 10px; border-radius:999px;}
+.status-tag.pending{background:rgba(185,139,46,.15); color:var(--gold);}
+.status-tag.confirmed{background:rgba(60,140,90,.15); color:#3c8c5a;}
+.status-tag.cancelled{background:rgba(200,60,60,.12); color:#c83c3c;}
+.status-tag.completed{background:rgba(90,90,200,.12); color:#6a5acd;}
+.empty-state{text-align:center; padding:40px 20px; color:var(--text-soft); font-size:14px;}
+
+/* ===================== MODALS ===================== */
+.modal-backdrop{position:fixed; inset:0; background:rgba(10,7,6,.55); z-index:1500; display:none; align-items:center; justify-content:center; padding:20px;}
+.modal-backdrop.open{display:flex;}
+.modal{background:var(--bg-panel); border-radius:var(--radius); padding:36px; max-width:420px; width:100%; position:relative; box-shadow:var(--shadow);}
+.modal-close{position:absolute; top:16px; right:18px; background:none; border:none; font-size:20px; color:var(--text-soft);}
+.modal h3{margin-bottom:6px;}
+.modal p.sub{color:var(--text-soft); font-size:13.5px; margin-bottom:22px;}
+.switch-link{text-align:center; margin-top:16px; font-size:13.5px; color:var(--text-soft);}
+.switch-link button{background:none; border:none; color:var(--crimson); font-weight:600;}
+html.dark .switch-link button{color:var(--gold-soft);}
+
+/* ===================== CONTACT ===================== */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+.contact-list li{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); align-items:flex-start;}
+.contact-list li svg{color:var(--crimson); flex-shrink:0; margin-top:2px;}
+html.dark .contact-list li svg{color:var(--gold-soft);}
+.contact-list h4{font-size:14.5px; margin-bottom:2px;}
+.contact-list p{font-size:13.5px; color:var(--text-soft); margin:0;}
+.map-frame{border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); height:100%; min-height:280px;}
+.map-frame iframe{width:100%; height:100%; border:0; min-height:280px; display:block;}
+
+/* ===================== FOOTER ===================== */
+footer{background:var(--ink); color:rgba(247,241,230,.75); padding:64px 0 28px;}
+html.dark footer{background:#0d0a08;}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px;}
+@media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;}}
+.foot-brand .en{color:var(--white); font-family:var(--display); font-size:22px;}
+.foot-brand p{font-size:13.5px; margin-top:12px; max-width:280px; color:rgba(247,241,230,.6);}
+footer h5{color:var(--white); font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-family:var(--mono); margin-bottom:16px;}
+footer ul li{margin-bottom:10px; font-size:13.5px;}
+footer ul li a:hover{color:var(--gold-soft);}
+.newsletter{display:flex; gap:8px; margin-top:14px;}
+.newsletter input{flex:1; padding:11px 14px; border-radius:999px; border:1px solid rgba(247,241,230,.2); background:rgba(247,241,230,.06); color:#fff; font-size:13px;}
+.foot-bottom{margin-top:48px; padding-top:24px; border-top:1px solid rgba(247,241,230,.12); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px; color:rgba(247,241,230,.5);}
+.foot-social{display:flex; gap:10px;}
+.foot-social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(247,241,230,.2); display:flex;align-items:center;justify-content:center;}
+
+/* ===================== FLOATING ===================== */
+.floaters{position:fixed; right:22px; bottom:22px; display:flex; flex-direction:column; gap:12px; z-index:800;}
+.fab{
+  width:52px;height:52px;border-radius:50%; display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.25); border:none; color:#fff;
+}
+.fab.wa{background:#25D366;}
+.fab.call{background:var(--crimson);}
+.fab.top{background:var(--ink); opacity:0; pointer-events:none; transition:opacity .3s ease;}
+.fab.top.show{opacity:1; pointer-events:auto;}
+
+/* misc */
+.disclaimer-box{
+  margin-top:18px; padding:14px 18px; border:1px dashed var(--border); border-radius:var(--radius-sm);
+  font-size:12.5px; color:var(--text-soft); background:var(--bg-panel);
+}
+::selection{background:var(--crimson); color:#fff;}
+.skip-link{position:absolute; left:-999px; top:0; background:var(--crimson); color:#fff; padding:10px 16px; z-index:9999;}
+.skip-link:focus{left:10px; top:10px;}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div id="preloader"><div class="seal-spin" aria-hidden="true"></div></div>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="nav-wrap">
+    <a href="#home" class="brand" aria-label="KRIMSON home">
+      <span class="brand-mark">K</span>
+      <span class="brand-text">
+        <div class="en">KRIMSON</div>
+      </span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#academy">Academy</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="navAccountLink">My Account</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="darkToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <a href="#booking" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="icon-btn burger" id="burgerBtn" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--gold-soft)">● Haldwani's Salon &amp; Certified Styling Academy</span>
+      <h1>Where beauty <em>becomes</em> a profession.</h1>
+      <p class="lead">KRIMSON is a unisex salon and training academy on Bareilly–Nainital Road — one chair for your next haircut, one classroom for your next career.</p>
+      <div class="hero-badges">
+        <span class="pill">★ 4.7 · 580 Google reviews</span>
+        <span class="pill">Women-owned</span>
+        <span class="pill">LGBTQ+ friendly</span>
+        <span class="pill">Open today until 9 PM</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#booking" class="btn btn-primary">Book Appointment</a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+        <a href="#academy" class="btn btn-ghost">Explore the Academy</a>
+      </div>
+    </div>
+    <div class="hero-seal-wrap">
+      <div class="seal-ring" aria-hidden="true"></div>
+      <div class="seal">
+        <div class="k">K</div>
+        <div class="stars">★★★★★</div>
+        <div class="rating">4.7 / 5 · 580 reviews</div>
+        <div class="sub">Bhotia Parao, Haldwani</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<section class="trust">
+  <div class="container trust-wrap">
+    <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L22 9l-5 5 1.2 7L12 17.8 5.8 21 7 14 2 9l7.1-.7z"/></svg><span><strong>4.7★</strong> average from 580 guests</span></div>
+    <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Unisex — everyone welcome</span></div>
+    <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><span>LGBTQ+ friendly space</span></div>
+    <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Women-owned business</span></div>
+    <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10.5V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h9"/><circle cx="17.5" cy="17.5" r="4.5"/><path d="M17.5 16v1.5l1 1"/></svg><span>Also a certified academy</span></div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-visual reveal">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="90" fill="none" stroke="#D9B872" stroke-width="2"/><circle cx="100" cy="100" r="60" fill="none" stroke="#D9B872" stroke-width="2"/></svg>
+      <div class="cap">
+        <span class="eyebrow">Est. in Bhotia Parao</span>
+        <h3>Two floors. One craft, taught and practiced daily.</h3>
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow reveal">Our story</span>
+      <h2 class="reveal" style="margin-top:10px;">A salon chair by day, a classroom by design</h2>
+      <p class="reveal">KRIMSON began as a neighbourhood unisex salon on Bareilly–Nainital Road and grew into something a little more unusual for Haldwani: a salon that also trains the next generation of stylists, colourists and makeup artists in the same building.</p>
+      <p class="reveal">Every guest chair is worked by a stylist who either trained here or trains others here — which is our way of saying the technique behind your haircut is never an afterthought.</p>
+      <p class="reveal"><strong>Our mission</strong> is simple: professional beauty care that respects your time, and an academy that turns that same care into a livelihood for our students. <strong>Our vision</strong> is to make Haldwani a place people travel to, not just for a haircut, but to learn the craft.</p>
+      <ul class="about-list">
+        <li class="reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><h4>Hygiene first</h4><p>Sanitised tools and fresh consumables for every guest.</p></div></li>
+        <li class="reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L22 9l-5 5 1.2 7L12 17.8 5.8 21 7 14 2 9l7.1-.7z"/></svg><div><h4>Trained faculty</h4><p>Senior stylists double as academy instructors.</p></div></li>
+        <li class="reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><h4>Unisex by design</h4><p>Services and training open to every guest and student.</p></div></li>
+        <li class="reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg><div><h4>Above Reliance Jewels</h4><p>Second floor, easy to find on Bareilly–Nainital Road.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What we offer</span>
+      <h2>Services, priced plainly</h2>
+      <p>Every service below can be booked directly with a stylist of your choice. Prices are starting prices in INR and vary by hair length, stylist seniority and product used.</p>
+    </div>
+    <div class="tabs" id="serviceTabs">
+      <button class="tab-btn active" data-filter="all">All</button>
+      <button class="tab-btn" data-filter="hair">Hair</button>
+      <button class="tab-btn" data-filter="skin">Skin &amp; Facial</button>
+      <button class="tab-btn" data-filter="makeup">Makeup</button>
+      <button class="tab-btn" data-filter="nails">Nails &amp; Waxing</button>
+    </div>
+    <div class="grid-services" id="serviceGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== ACADEMY ===================== -->
+<section class="section academy" id="academy">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The other half of KRIMSON</span>
+      <h2>Train here, then work anywhere</h2>
+      <p>Our academy runs alongside the salon floor, so students practice on real guests under supervision before graduating with a certificate.</p>
+    </div>
+    <div class="academy-grid">
+      <div class="academy-card reveal"><span class="num">01</span><h4>Hair Styling &amp; Cutting</h4><p>Foundation through advanced cutting, blow-dry and styling techniques.</p></div>
+      <div class="academy-card reveal"><span class="num">02</span><h4>Colour &amp; Global Techniques</h4><p>Balayage, global colour, root touch-ups and colour correction.</p></div>
+      <div class="academy-card reveal"><span class="num">03</span><h4>Bridal &amp; Party Makeup</h4><p>HD makeup, draping and bridal look design for real events.</p></div>
+      <div class="academy-card reveal"><span class="num">04</span><h4>Skin &amp; Facial Therapy</h4><p>Facials, skin analysis and treatment protocols.</p></div>
+      <div class="academy-card reveal"><span class="num">05</span><h4>Nail Art &amp; Care</h4><p>Manicure, pedicure and nail art fundamentals.</p></div>
+      <div class="academy-card reveal"><span class="num">06</span><h4>Salon Management</h4><p>Client handling, hygiene standards and running a floor.</p></div>
+    </div>
+    <div class="disclaimer-box reveal">Course duration, fees and batch timings are shared during a in-person counselling session — call or WhatsApp to book a slot.</div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Portfolio</span>
+      <h2>Recent work from our chairs</h2>
+      <p>A preview of transformations from our stylists — filter by category, tap any tile for details.</p>
+    </div>
+    <div class="tabs" id="galleryTabs">
+      <button class="tab-btn active" data-gfilter="all">All</button>
+      <button class="tab-btn" data-gfilter="hair">Hair</button>
+      <button class="tab-btn" data-gfilter="makeup">Makeup</button>
+      <button class="tab-btn" data-gfilter="bridal">Bridal</button>
+      <button class="tab-btn" data-gfilter="nails">Nail Art</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="section" id="team" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Meet the floor</span>
+      <h2>Stylists &amp; faculty</h2>
+      <p>Every senior stylist at KRIMSON also teaches in the academy — book directly with the person who'll do your service.</p>
+    </div>
+    <div class="grid-team" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Price list</span>
+      <h2>Full pricing, no surprises</h2>
+      <p>Starting prices in INR — final price is confirmed by your stylist before the service begins.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="price-table" id="priceTable">
+        <thead><tr><th>Service</th><th>Duration</th><th>Starting Price</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="section" id="testimonials" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">580 reviews on Google · 4.7★</span>
+      <h2>What guests say</h2>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The whole team was friendly and attentive, and the location is convenient — an easy find on the main road."</p><div class="testi-foot"><div class="av">R</div><div><div class="name">Google Reviewer</div><div class="meta">Haldwani</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"My haircut and grooming were handled with real attention to detail — you can tell the stylists are properly trained."</p><div class="testi-foot"><div class="av">S</div><div><div class="name">Google Reviewer</div><div class="meta">Haldwani</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"One of the places in Haldwani you should try at least once for salon services — consistently good experience."</p><div class="testi-foot"><div class="av">A</div><div><div class="name">Google Reviewer</div><div class="meta">Haldwani</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Comfortable for everyone — genuinely felt like an inclusive, welcoming space from the moment I walked in."</p><div class="testi-foot"><div class="av">P</div><div><div class="name">Google Reviewer</div><div class="meta">Haldwani</div></div></div></div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button class="icon-btn" id="testiPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="icon-btn" id="testiNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      <a href="https://search.google.com/local/reviews?placeid=" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-left:auto;">Read all 580 reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section" id="faq">
+  <div class="container" style="max-width:760px;">
+    <div class="section-head">
+      <span class="eyebrow">Good to know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- ===================== BOOKING ===================== -->
+<section class="section booking" id="booking">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Reserve your slot</span>
+      <h2>Book an appointment</h2>
+      <p>Fill this in and we'll hold your slot. You'll get a confirmation on screen instantly; our team follows up by phone to confirm.</p>
+    </div>
+    <div class="booking-form-card">
+      <div class="form-msg" id="bookMsg"></div>
+      <form id="bookingForm">
+        <div class="book-grid">
+          <div class="field"><label for="bkName">Full name</label><input id="bkName" required placeholder="Your name"></div>
+          <div class="field"><label for="bkPhone">Phone</label><input id="bkPhone" required placeholder="10-digit mobile number" pattern="[0-9]{10}"></div>
+          <div class="field"><label for="bkEmail">Email</label><input id="bkEmail" type="email" required placeholder="you@example.com"></div>
+          <div class="field full">
+            <label>Services &amp; products (select one or more)</label>
+            <div class="service-checks" id="serviceChecks"></div>
+            <div class="service-summary" id="serviceSummary">No services selected yet.</div>
+          </div>
+          <div class="field"><label for="bkStaff">Preferred stylist</label>
+            <select id="bkStaff">
+              <option value="">No preference</option>
+              <option>Neha Bisht — Senior Stylist</option>
+              <option>Rohit Rawat — Colour Specialist</option>
+              <option>Simran Kaur — Bridal Makeup Artist</option>
+              <option>Aman Joshi — Academy Faculty</option>
+            </select>
+          </div>
+          <div class="field"><label for="bkDate">Date</label><input id="bkDate" type="date" required></div>
+          <div class="field full">
+            <label>Time slot</label>
+            <div class="slots" id="slotList"></div>
+          </div>
+          <div class="field full"><label for="bkNotes">Notes (optional)</label><textarea id="bkNotes" rows="3" placeholder="Anything we should know before you arrive?"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:22px;">Confirm Appointment</button>
+        <p style="font-size:12px;color:var(--text-soft);text-align:center;margin-top:12px;">This holds your slot in your browser and prepares an SMS/WhatsApp confirmation — a live payment or SMS gateway needs to be connected on the server side.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACCOUNT ===================== -->
+<section class="section" id="account" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Your account</span>
+      <h2 id="accountHeading">Sign in to manage your bookings</h2>
+      <p>See upcoming appointments, your booking history, or reschedule — all tied to the email you booked with.</p>
+    </div>
+
+    <div id="loggedOutView">
+      <div class="dash-card" style="max-width:460px;">
+        <p style="margin:0 0 18px;color:var(--text-soft);font-size:14px;">Log in with the email you used while booking to view your appointments.</p>
+        <div class="field" style="margin-bottom:12px;"><label for="quickEmail">Email</label><input id="quickEmail" type="email" placeholder="you@example.com"></div>
+        <button class="btn btn-primary btn-block" id="quickLoginBtn">View My Appointments</button>
+      </div>
+    </div>
+
+    <div id="loggedInView" style="display:none;">
+      <div class="dash-grid">
+        <div class="dash-card dash-stat"><div class="num" id="statUpcoming">0</div><div class="lbl">Upcoming</div></div>
+        <div class="dash-card dash-stat"><div class="num" id="statCompleted">0</div><div class="lbl">Completed</div></div>
+        <div class="dash-card dash-stat"><div class="num" id="statTotal">0</div><div class="lbl">Total Bookings</div></div>
+      </div>
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <h4 style="font-family:var(--display);font-size:18px;">Your appointments</h4>
+          <button class="btn btn-ghost btn-sm" id="logoutBtn">Log out</button>
+        </div>
+        <div id="myAppointments"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">Find us</span>
+      <h2 style="margin-top:10px;">Visit or reach out</h2>
+      <ul class="contact-list" style="margin-top:24px;">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><h4>Address</h4><p>2nd floor, Bareilly–Nainital Road, above Reliance Jewels, Bhotia Parao, Haldwani, Uttarakhand 263139<br>Plus code: 6GJJ+PF Haldwani</p></div></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.95.36 1.87.68 2.75a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.33-1.25a2 2 0 012.11-.45c.88.32 1.8.55 2.75.68A2 2 0 0122 16.92z"/></svg>
+          <div><h4>Phone / WhatsApp</h4><p>063985 07462</p></div></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div><h4>Hours</h4><p>Open today · closes 9 PM<br><span style="font-size:12px;">Please call ahead to confirm hours on public holidays.</span></p></div></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg>
+          <div><h4>Instagram</h4><p><a href="https://instagram.com" target="_blank" rel="noopener" style="text-decoration:underline;">@krimson.salon</a> — replace with your real handle</p></div></li>
+      </ul>
+      <div style="display:flex;gap:12px;margin-top:8px;">
+        <a href="tel:+916398507462" class="btn btn-primary">Call Now</a>
+        <a href="https://wa.me/916398507462" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp Us</a>
+      </div>
+      <div class="disclaimer-box">Contact details are taken from the salon's public Google Business listing. Please verify the Instagram handle and website link before publishing.</div>
+    </div>
+    <div>
+      <div class="field" style="margin-bottom:14px;"><label for="cName">Name</label><input id="cName" placeholder="Your name"></div>
+      <div class="field" style="margin-bottom:14px;"><label for="cMsg">Message</label><textarea id="cMsg" rows="4" placeholder="How can we help?"></textarea></div>
+      <button class="btn btn-primary btn-block" id="contactSendBtn" style="margin-bottom:24px;">Send Message</button>
+      <div class="map-frame">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=KRIMSON+Unisex+Salon+and+Academy+Bhotia+Parao+Haldwani+Uttarakhand&output=embed"
+          title="Map to KRIMSON Unisex Salon and Academy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <div class="en">KRIMSON</div>
+      <p>Unisex salon and certified styling academy in Bhotia Parao, Haldwani. Women-owned, LGBTQ+ friendly, rated 4.7 from 580 guests.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+        <button class="btn btn-gold btn-sm" id="newsletterBtn">Join</button>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul><li><a href="#services">Services</a></li><li><a href="#academy">Academy</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#team">Team</a></li></ul>
+    </div>
+    <div>
+      <h5>Support</h5>
+      <ul><li><a href="#faq">FAQ</a></li><li><a href="#booking">Book Appointment</a></li><li><a href="#contact">Contact</a></li><li><a href="#" id="adminLinkFooter">Staff Login</a></li></ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li>2nd floor, above Reliance Jewels</li>
+        <li>Bhotia Parao, Haldwani, UK 263139</li>
+        <li>063985 07462</li>
+        <li>Open today · closes 9 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© <span id="year"></span> KRIMSON Unisex Salon and Academy. All rights reserved.</span>
+    <div class="foot-social">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      <a href="https://wa.me/916398507462" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-12.9 7.3L3 20l1.3-5A8.5 8.5 0 1121 11.5z"/></svg></a>
+      <a href="tel:+916398507462" aria-label="Call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 011.12 4.18 2 2 0 013.11 2h3a2 2 0 012 1.72c.13.95.36 1.87.68 2.75a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.33-1.25a2 2 0 012.11-.45 12.8 12.8 0 002.75.68A2 2 0 0122 16.92z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== FLOATERS ===================== -->
+<div class="floaters">
+  <button class="fab top" id="topBtn" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <a class="fab call" href="tel:+916398507462" aria-label="Call salon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 011.12 4.18 2 2 0 013.11 2h3a2 2 0 012 1.72c.13.95.36 1.87.68 2.75a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.33-1.25a2 2 0 012.11-.45 12.8 12.8 0 002.75.68A2 2 0 0122 16.92z"/></svg></a>
+  <a class="fab wa" href="https://wa.me/916398507462" target="_blank" rel="noopener" aria-label="WhatsApp salon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-12.9 7.3L3 20l1.3-5A8.5 8.5 0 1121 11.5z"/></svg></a>
+</div>
+
+<!-- ===================== MODALS ===================== -->
+<div class="modal-backdrop" id="loginBackdrop">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Welcome back</h3>
+    <p class="sub">Log in to manage your appointments.</p>
+    <div class="field" style="margin-bottom:12px;"><label>Email</label><input id="loginEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field" style="margin-bottom:18px;"><label>Password</label><input id="loginPassword" type="password" placeholder="••••••••"></div>
+    <button class="btn btn-primary btn-block" id="loginSubmit">Log In</button>
+    <p class="switch-link">New here? <button data-open="register">Create an account</button> · <button data-open="forgot">Forgot password?</button></p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="registerBackdrop">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Create your account</h3>
+    <p class="sub">Takes a minute — used to track your bookings.</p>
+    <div class="field" style="margin-bottom:12px;"><label>Full name</label><input id="regName" placeholder="Your name"></div>
+    <div class="field" style="margin-bottom:12px;"><label>Email</label><input id="regEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field" style="margin-bottom:18px;"><label>Password</label><input id="regPassword" type="password" placeholder="Create a password"></div>
+    <button class="btn btn-primary btn-block" id="registerSubmit">Create Account</button>
+    <p class="switch-link">Already have an account? <button data-open="login">Log in</button></p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="forgotBackdrop">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Reset password</h3>
+    <p class="sub">Enter your email — this demo will simply confirm receipt; a live site needs an email service connected.</p>
+    <div class="field" style="margin-bottom:18px;"><label>Email</label><input id="forgotEmail" type="email" placeholder="you@example.com"></div>
+    <button class="btn btn-primary btn-block" id="forgotSubmit">Send Reset Link</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="adminBackdrop">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Staff login</h3>
+    <p class="sub">Demo password: <strong>krimson123</strong></p>
+    <div class="field" style="margin-bottom:18px;"><label>Password</label><input id="adminPassword" type="password" placeholder="Enter staff password"></div>
+    <button class="btn btn-primary btn-block" id="adminSubmit">Enter Dashboard</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="adminDashBackdrop">
+  <div class="modal" style="max-width:720px;text-align:left;">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Admin dashboard</h3>
+    <p class="sub">Live bookings made through this browser.</p>
+    <div class="dash-grid">
+      <div class="dash-card dash-stat"><div class="num" id="adminTotalBookings">0</div><div class="lbl">Total Bookings</div></div>
+      <div class="dash-card dash-stat"><div class="num" id="adminPending">0</div><div class="lbl">Pending</div></div>
+      <div class="dash-card dash-stat"><div class="num" id="adminRevenue">₹0</div><div class="lbl">Est. Revenue</div></div>
+    </div>
+    <div id="adminBookingsList" style="max-height:320px;overflow-y:auto;"></div>
+    <p style="font-size:12px;color:var(--text-soft);margin-top:16px;">This is a front-end demo using your browser's local storage. A production admin panel needs a real database and authentication on the server.</p>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <h3 id="lightboxTitle">Title</h3>
+    <p id="lightboxDesc" style="color:rgba(255,253,249,.8);margin-top:10px;">Description</p>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============ DATA ============ */
+const SERVICES = [
+  {cat:"hair", name:"Haircut & Style", desc:"Precision cut and blow-dry finish for any hair type.", dur:"45 min", price:249, icon:"scissors"},
+  {cat:"hair", name:"Global Hair Colour", desc:"Full-head colour using ammonia-friendly formulas.", dur:"2 hr", price:1499, icon:"drop"},
+  {cat:"hair", name:"Hair Spa & Treatment", desc:"Deep conditioning spa for dry or damaged hair.", dur:"1 hr", price:899, icon:"leaf"},
+  {cat:"skin", name:"Classic Facial", desc:"Cleansing, exfoliation and hydration facial.", dur:"50 min", price:799, icon:"sparkle"},
+  {cat:"skin", name:"Skin Brightening Treatment", desc:"Targeted treatment for dull or uneven skin tone.", dur:"1 hr", price:1299, icon:"sun"},
+  {cat:"makeup", name:"Bridal Makeup", desc:"HD bridal makeup with draping and trial session.", dur:"3 hr", price:8999, icon:"crown"},
+  {cat:"makeup", name:"Party Makeup", desc:"Event-ready makeup for parties and functions.", dur:"1 hr", price:1499, icon:"star"},
+  {cat:"nails", name:"Manicure", desc:"Nail shaping, cuticle care and polish.", dur:"40 min", price:399, icon:"hand"},
+  {cat:"nails", name:"Pedicure", desc:"Foot soak, exfoliation and polish.", dur:"45 min", price:499, icon:"foot"},
+  {cat:"nails", name:"Full Body Waxing", desc:"Smooth, gentle waxing using quality wax.", dur:"1 hr", price:1199, icon:"drop"},
+  {cat:"nails", name:"Threading", desc:"Eyebrow and facial threading.", dur:"15 min", price:99, icon:"line"},
+  {cat:"nails", name:"Nail Art", desc:"Custom nail art design, per set.", dur:"45 min", price:599, icon:"star"},
+];
+
+const ICONS = {
+  scissors:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1L20 20M8.1 15.9L20 4"/></svg>',
+  drop:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s7 8 7 13a7 7 0 11-14 0c0-5 7-13 7-13z"/></svg>',
+  leaf:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019 6c3-3 10-3 12-1-2 10-9 15-10 15z"/></svg>',
+  sparkle:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 4.9L18 9l-4.2 1.6L12 15l-1.8-4.4L6 9l4.2-1.1z"/></svg>',
+  sun:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  crown:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l4 4 5-7 5 7 4-4-2 10H5z"/></svg>',
+  star:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.3L22 9l-5 5 1.2 7L12 17.8 5.8 21 7 14 2 9l7.1-.7z"/></svg>',
+  hand:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4a1.5 1.5 0 013 0v7M11 4a1.5 1.5 0 013 0v7M14 5a1.5 1.5 0 013 0v9M17 9a1.5 1.5 0 013 0v6a6 6 0 01-6 6h-2a6 6 0 01-5-2.7L4 14"/></svg>',
+  foot:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3c-2 0-3 2-3 5s1 4 1 7a3 3 0 003 3c3 0 5-2 5-5 0-4-1-6-1-8 0-1-1-2-2-2z"/></svg>',
+  line:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16"/></svg>',
+};
+
+const TEAM = [
+  {name:"Neha Bisht", role:"Senior Stylist & Academy Head", exp:"9 years experience · Hair cutting & styling"},
+  {name:"Rohit Rawat", role:"Colour Specialist", exp:"6 years experience · Global colour & balayage"},
+  {name:"Simran Kaur", role:"Bridal Makeup Artist", exp:"7 years experience · Bridal & HD makeup"},
+  {name:"Aman Joshi", role:"Academy Faculty", exp:"5 years experience · Skin & facial therapy"},
+  {name:"Pooja Negi", role:"Nail & Waxing Expert", exp:"4 years experience · Nail art & waxing"},
+  {name:"Karan Mehta", role:"Junior Stylist", exp:"2 years experience · Haircuts & grooming"},
+];
+
+const GALLERY = [
+  {cat:"hair", ar:1.2, label:"Layered cut"},
+  {cat:"bridal", ar:0.8, label:"Bridal look"},
+  {cat:"makeup", ar:1, label:"Party makeup"},
+  {cat:"nails", ar:1, label:"Nail art set"},
+  {cat:"hair", ar:0.9, label:"Balayage colour"},
+  {cat:"bridal", ar:1.1, label:"Bridal draping"},
+  {cat:"makeup", ar:0.85, label:"HD makeup"},
+  {cat:"hair", ar:1, label:"Blow-dry finish"},
+  {cat:"nails", ar:1.15, label:"French manicure"},
+];
+
+const FAQS = [
+  {q:"Do I need to book in advance?", a:"Walk-ins are welcome, but booking online guarantees your slot and preferred stylist, especially on weekends."},
+  {q:"Is KRIMSON really unisex?", a:"Yes — every service on our menu, and every seat in the academy, is open to all genders."},
+  {q:"Can I train at the academy without any experience?", a:"Yes, our foundation courses start from zero experience. Call or WhatsApp us to book a counselling session."},
+  {q:"Do you offer bridal packages?", a:"Yes, including a trial session before the wedding day — ask your stylist for a custom package."},
+  {q:"What safety measures are followed?", a:"Tools are sanitised between clients and fresh, single-use consumables are used wherever applicable."},
+  {q:"How do I reach KRIMSON?", a:"We're on the 2nd floor above Reliance Jewels, Bareilly–Nainital Road, Bhotia Parao, Haldwani."},
+];
+
+/* ============ PRELOADER ============ */
+window.addEventListener("load", () => {
+  const pre = document.getElementById("preloader");
+  setTimeout(() => pre.classList.add("hide"), 350);
+});
+
+/* ============ DARK MODE ============ */
+const darkToggle = document.getElementById("darkToggle");
+const root = document.documentElement;
+function applyDark(on){
+  root.classList.toggle("dark", on);
+  try{ localStorage.setItem("krimson_dark", on ? "1":"0"); }catch(e){}
+}
+try{
+  const saved = localStorage.getItem("krimson_dark");
+  if(saved === "1") applyDark(true);
+  else if(saved === null && window.matchMedia("(prefers-color-scheme: dark)").matches) applyDark(true);
+}catch(e){}
+darkToggle.addEventListener("click", () => applyDark(!root.classList.contains("dark")));
+
+/* ============ NAV ============ */
+const burger = document.getElementById("burgerBtn");
+const navLinks = document.getElementById("navLinks");
+burger.addEventListener("click", () => navLinks.classList.toggle("open"));
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+}, {threshold:0.15});
+document.querySelectorAll(".about-visual, .about-copy .reveal, .reveal").forEach(el => { el.classList.add("reveal"); io.observe(el); });
+
+/* ============ BACK TO TOP ============ */
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => topBtn.classList.toggle("show", window.scrollY > 500));
+topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+/* ============ RENDER SERVICES ============ */
+const serviceGrid = document.getElementById("serviceGrid");
+function renderServices(filter){
+  serviceGrid.innerHTML = SERVICES.filter(s => filter==="all" || s.cat===filter).map(s => `
+    <div class="card reveal in">
+      <div class="card-icon">${ICONS[s.icon]}</div>
+      <h3>${s.name}</h3>
+      <p class="desc">${s.desc}</p>
+      <div class="card-meta">
+        <div><div class="price">₹${s.price}+</div><div class="dur">${s.dur}</div></div>
+        <a href="#booking" class="btn btn-ghost btn-sm" onclick="krimsonSelectService('${s.name.replace(/'/g,"")}')">Book Now</a>
+      </div>
+    </div>`).join("");
+}
+renderServices("all");
+document.getElementById("serviceTabs").addEventListener("click", (e) => {
+  const btn = e.target.closest(".tab-btn"); if(!btn) return;
+  document.querySelectorAll("#serviceTabs .tab-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderServices(btn.dataset.filter);
+});
+
+/* ============ PRICE TABLE ============ */
+const priceBody = document.querySelector("#priceTable tbody");
+priceBody.innerHTML = SERVICES.map(s => `<tr><td>${s.name}</td><td>${s.dur}</td><td class="p">₹${s.price}+</td><td><a href="#booking" class="btn btn-ghost btn-sm" onclick="krimsonSelectService('${s.name.replace(/'/g,"")}')">Book</a></td></tr>`).join("");
+
+/* ============ BOOKING SERVICE MULTI-SELECT ============ */
+const serviceChecks = document.getElementById("serviceChecks");
+const serviceSummary = document.getElementById("serviceSummary");
+serviceChecks.innerHTML = SERVICES.map(s => `
+  <label class="service-check" data-name="${s.name}">
+    <input type="checkbox" value="${s.name}" data-price="${s.price}" data-dur="${s.dur}">
+    <span>${s.name}<small>₹${s.price}+ · ${s.dur}</small></span>
+  </label>`).join("");
+
+function getSelectedServices(){
+  return Array.from(serviceChecks.querySelectorAll("input:checked")).map(cb => ({
+    name: cb.value, price: Number(cb.dataset.price), dur: cb.dataset.dur
+  }));
+}
+function updateServiceSummary(){
+  const selected = getSelectedServices();
+  serviceChecks.querySelectorAll(".service-check").forEach(label => {
+    label.classList.toggle("checked", label.querySelector("input").checked);
+  });
+  if(selected.length === 0){
+    serviceSummary.textContent = "No services selected yet.";
+  } else {
+    const total = selected.reduce((sum,s) => sum + s.price, 0);
+    serviceSummary.textContent = `${selected.length} selected — ${selected.map(s=>s.name).join(", ")} · approx ₹${total}+ total`;
+  }
+}
+serviceChecks.addEventListener("change", updateServiceSummary);
+updateServiceSummary();
+
+function krimsonSelectService(name){
+  const cb = serviceChecks.querySelector(`input[value="${name.replace(/"/g,'')}"]`);
+  if(cb){ cb.checked = true; updateServiceSummary(); }
+}
+
+/* ============ TEAM ============ */
+document.getElementById("teamGrid").innerHTML = TEAM.map(t => `
+  <div class="team-card reveal in">
+    <div class="avatar">${t.name.split(" ").map(n=>n[0]).join("")}</div>
+    <h4>${t.name}</h4>
+    <div class="role">${t.role}</div>
+    <p class="exp">${t.exp}</p>
+    <div class="social-row">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+    </div>
+    <a href="#booking" class="btn btn-ghost btn-sm btn-block" onclick="document.getElementById('bkStaff').value='${t.name} — ${t.role}'">Book with ${t.name.split(" ")[0]}</a>
+  </div>`).join("");
+
+/* ============ GALLERY ============ */
+const galGrid = document.getElementById("galleryGrid");
+const tileColors = ["#9E1B32","#6E0F22","#4A0A1A","#B98B2E"];
+function renderGallery(filter){
+  galGrid.innerHTML = GALLERY.map((g,i) => `
+    <div class="g-item ${filter!=="all" && g.cat!==filter ? "hidden-g":""}" data-cat="${g.cat}" data-idx="${i}">
+      <div class="tile" style="--ar:${g.ar};--tile-bg:${tileColors[i % tileColors.length]}">${g.label}</div>
+      <div class="label">${g.cat.toUpperCase()}</div>
+    </div>`).join("");
+}
+renderGallery("all");
+document.getElementById("galleryTabs").addEventListener("click", (e) => {
+  const btn = e.target.closest(".tab-btn"); if(!btn) return;
+  document.querySelectorAll("#galleryTabs .tab-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderGallery(btn.dataset.gfilter);
+});
+const lightbox = document.getElementById("lightbox");
+galGrid.addEventListener("click", (e) => {
+  const item = e.target.closest(".g-item"); if(!item) return;
+  const g = GALLERY[item.dataset.idx];
+  document.getElementById("lightboxTitle").textContent = g.label;
+  document.getElementById("lightboxDesc").textContent = "Category: " + g.cat.charAt(0).toUpperCase()+g.cat.slice(1) + ". Replace this placeholder tile with a real photo from your portfolio.";
+  lightbox.classList.add("open");
+});
+document.getElementById("lightboxClose").addEventListener("click", () => lightbox.classList.remove("open"));
+lightbox.addEventListener("click", (e) => { if(e.target === lightbox) lightbox.classList.remove("open"); });
+
+/* ============ FAQ ============ */
+document.getElementById("faqList").innerHTML = FAQS.map((f,i) => `
+  <div class="faq-item" data-i="${i}">
+    <button class="faq-q">${f.q}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+    <div class="faq-a"><p>${f.a}</p></div>
+  </div>`).join("");
+document.querySelectorAll(".faq-q").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(i => { i.classList.remove("open"); i.querySelector(".faq-a").style.maxHeight = null; });
+    if(!wasOpen){ item.classList.add("open"); const a = item.querySelector(".faq-a"); a.style.maxHeight = a.scrollHeight + "px"; }
+  });
+});
+
+/* ============ TESTIMONIAL SLIDER ============ */
+const track = document.getElementById("testiTrack");
+let testiIdx = 0;
+function slideTo(i){
+  const cardWidth = track.children[0].offsetWidth + 22;
+  testiIdx = Math.max(0, Math.min(i, track.children.length-1));
+  track.style.transform = `translateX(-${testiIdx*cardWidth}px)`;
+}
+document.getElementById("testiNext").addEventListener("click", () => slideTo(testiIdx+1));
+document.getElementById("testiPrev").addEventListener("click", () => slideTo(testiIdx-1));
+
+/* ============ BOOKING SLOTS ============ */
+const ALL_SLOTS = ["10:00 AM","11:00 AM","12:00 PM","1:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"];
+const slotList = document.getElementById("slotList");
+const bkDate = document.getElementById("bkDate");
+let selectedSlot = null;
+
+function getBookings(){
+  try{ return JSON.parse(localStorage.getItem("krimson_bookings") || "[]"); }catch(e){ return []; }
+}
+function saveBookings(list){ try{ localStorage.setItem("krimson_bookings", JSON.stringify(list)); }catch(e){} }
+
+function renderSlots(){
+  const date = bkDate.value;
+  const bookings = getBookings();
+  const takenSlots = bookings.filter(b => b.date === date && b.status !== "cancelled").map(b => b.slot);
+  selectedSlot = null;
+  slotList.innerHTML = ALL_SLOTS.map(s => `<button type="button" class="slot ${takenSlots.includes(s) ? "taken":""}" data-slot="${s}" ${takenSlots.includes(s)?"disabled":""}>${s}</button>`).join("");
+}
+const todayStr = new Date().toISOString().split("T")[0];
+bkDate.min = todayStr;
+bkDate.value = todayStr;
+renderSlots();
+bkDate.addEventListener("change", renderSlots);
+slotList.addEventListener("click", (e) => {
+  const btn = e.target.closest(".slot"); if(!btn || btn.disabled) return;
+  slotList.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+  btn.classList.add("selected");
+  selectedSlot = btn.dataset.slot;
+});
+
+/* ============ BOOKING FORM SUBMIT ============ */
+const bookMsg = document.getElementById("bookMsg");
+document.getElementById("bookingForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("bkName").value.trim();
+  const phone = document.getElementById("bkPhone").value.trim();
+  const email = document.getElementById("bkEmail").value.trim();
+  const selectedServices = getSelectedServices();
+  const services = selectedServices.map(s => s.name);
+  const staff = document.getElementById("bkStaff").value;
+  const date = bkDate.value;
+  const notes = document.getElementById("bkNotes").value.trim();
+
+  if(!name || !phone || !email || services.length===0 || !date || !selectedSlot){
+    bookMsg.textContent = "Please fill all required fields, choose at least one service, and pick a time slot.";
+    bookMsg.className = "form-msg show err";
+    return;
+  }
+  const bookings = getBookings();
+  if(bookings.some(b => b.date===date && b.slot===selectedSlot && b.status!=="cancelled")){
+    bookMsg.textContent = "That slot was just taken — please pick another.";
+    bookMsg.className = "form-msg show err";
+    renderSlots();
+    return;
+  }
+  bookings.push({
+    id: "BK" + Date.now(),
+    name, phone, email, services, staff, date, slot: selectedSlot, notes,
+    status: "pending", createdAt: new Date().toISOString()
+  });
+  saveBookings(bookings);
+  bookMsg.textContent = `Booked! ${services.join(", ")} on ${date} at ${selectedSlot}. We'll call ${phone} to confirm.`;
+  bookMsg.className = "form-msg show ok";
+  e.target.reset();
+  bkDate.value = todayStr;
+  renderSlots();
+  updateServiceSummary();
+  refreshAdminStats();
+});
+
+/* ============ ACCOUNT / DASHBOARD ============ */
+const loggedOutView = document.getElementById("loggedOutView");
+const loggedInView = document.getElementById("loggedInView");
+const accountHeading = document.getElementById("accountHeading");
+let currentEmail = null;
+try{ currentEmail = localStorage.getItem("krimson_current_email"); }catch(e){}
+
+function renderDashboard(email){
+  const bookings = getBookings().filter(b => b.email.toLowerCase() === email.toLowerCase());
+  const upcoming = bookings.filter(b => b.status==="pending" || b.status==="confirmed");
+  const completed = bookings.filter(b => b.status==="completed");
+  document.getElementById("statUpcoming").textContent = upcoming.length;
+  document.getElementById("statCompleted").textContent = completed.length;
+  document.getElementById("statTotal").textContent = bookings.length;
+  const list = document.getElementById("myAppointments");
+  if(bookings.length === 0){
+    list.innerHTML = `<div class="empty-state">No appointments yet — <a href="#booking" style="text-decoration:underline;">book your first visit</a>.</div>`;
+    return;
+  }
+  list.innerHTML = bookings.slice().reverse().map(b => `
+    <div class="appt-row" data-id="${b.id}">
+      <div><strong>${(b.services||[b.service]).join(", ")}</strong><div style="font-size:12.5px;color:var(--text-soft)">${b.date} · ${b.slot}${b.staff?(" · "+b.staff):""}</div></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="status-tag ${b.status}">${b.status}</span>
+        ${b.status==="pending" || b.status==="confirmed" ? `<button class="btn btn-ghost btn-sm cancel-btn" data-id="${b.id}">Cancel</button>` : ""}
+      </div>
+    </div>`).join("");
+  list.querySelectorAll(".cancel-btn").forEach(btn => btn.addEventListener("click", () => {
+    const all = getBookings();
+    const b = all.find(x => x.id === btn.dataset.id);
+    if(b){ b.status = "cancelled"; saveBookings(all); renderDashboard(email); refreshAdminStats(); }
+  }));
+}
+function showLoggedIn(email){
+  currentEmail = email;
+  try{ localStorage.setItem("krimson_current_email", email); }catch(e){}
+  loggedOutView.style.display = "none";
+  loggedInView.style.display = "block";
+  accountHeading.textContent = "Welcome back, " + email;
+  renderDashboard(email);
+}
+if(currentEmail) showLoggedIn(currentEmail);
+
+document.getElementById("quickLoginBtn").addEventListener("click", () => {
+  const email = document.getElementById("quickEmail").value.trim();
+  if(!email){ return; }
+  showLoggedIn(email);
+});
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  currentEmail = null;
+  try{ localStorage.removeItem("krimson_current_email"); }catch(e){}
+  loggedOutView.style.display = "block";
+  loggedInView.style.display = "none";
+  accountHeading.textContent = "Sign in to manage your bookings";
+});
+
+/* ============ MODALS: open/close ============ */
+function openModal(id){ document.getElementById(id).classList.add("open"); }
+function closeModal(el){ el.classList.remove("open"); }
+document.querySelectorAll("[data-close]").forEach(btn => btn.addEventListener("click", (e) => closeModal(e.target.closest(".modal-backdrop"))));
+document.querySelectorAll(".modal-backdrop").forEach(bd => bd.addEventListener("click", (e) => { if(e.target === bd) closeModal(bd); }));
+document.querySelectorAll("[data-open]").forEach(btn => btn.addEventListener("click", () => {
+  closeModal(btn.closest(".modal-backdrop"));
+  const map = {login:"loginBackdrop", register:"registerBackdrop", forgot:"forgotBackdrop"};
+  openModal(map[btn.dataset.open]);
+}));
+document.getElementById("navAccountLink").addEventListener("click", (e) => {
+  e.preventDefault();
+  if(currentEmail){ document.getElementById("account").scrollIntoView({behavior:"smooth"}); }
+  else openModal("loginBackdrop");
+});
+
+/* Fake auth (demo only, browser-only) */
+function getUsers(){ try{ return JSON.parse(localStorage.getItem("krimson_users")||"[]"); }catch(e){ return []; } }
+function saveUsers(u){ try{ localStorage.setItem("krimson_users", JSON.stringify(u)); }catch(e){} }
+
+document.getElementById("registerSubmit").addEventListener("click", () => {
+  const name = document.getElementById("regName").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const pass = document.getElementById("regPassword").value;
+  if(!name || !email || !pass) return;
+  const users = getUsers();
+  users.push({name, email, pass});
+  saveUsers(users);
+  closeModal(document.getElementById("registerBackdrop"));
+  showLoggedIn(email);
+  document.getElementById("account").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("loginSubmit").addEventListener("click", () => {
+  const email = document.getElementById("loginEmail").value.trim();
+  if(!email) return;
+  closeModal(document.getElementById("loginBackdrop"));
+  showLoggedIn(email);
+  document.getElementById("account").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("forgotSubmit").addEventListener("click", () => {
+  const box = document.getElementById("forgotBackdrop").querySelector(".modal");
+  box.querySelector("p.sub").textContent = "If that email exists in our system, a reset link would be sent — connect a real email service to enable this.";
+});
+
+/* ============ ADMIN ============ */
+document.getElementById("adminLinkFooter").addEventListener("click", (e) => { e.preventDefault(); openModal("adminBackdrop"); });
+document.getElementById("adminSubmit").addEventListener("click", () => {
+  const pass = document.getElementById("adminPassword").value;
+  if(pass === "krimson123"){
+    closeModal(document.getElementById("adminBackdrop"));
+    refreshAdminStats();
+    openModal("adminDashBackdrop");
+  } else {
+    document.getElementById("adminPassword").style.borderColor = "#c83c3c";
+  }
+});
+function refreshAdminStats(){
+  const bookings = getBookings();
+  document.getElementById("adminTotalBookings").textContent = bookings.length;
+  document.getElementById("adminPending").textContent = bookings.filter(b=>b.status==="pending").length;
+  const revenue = bookings.reduce((sum,b) => {
+    if(b.status==="cancelled") return sum;
+    const names = b.services || (b.service ? [b.service] : []);
+    const bookingTotal = names.reduce((s2,name) => {
+      const svc = SERVICES.find(s => s.name === name);
+      return s2 + (svc ? svc.price : 0);
+    }, 0);
+    return sum + bookingTotal;
+  }, 0);
+  document.getElementById("adminRevenue").textContent = "₹" + revenue;
+  const list = document.getElementById("adminBookingsList");
+  if(bookings.length === 0){ list.innerHTML = `<div class="empty-state">No bookings yet.</div>`; return; }
+  list.innerHTML = bookings.slice().reverse().map(b => `
+    <div class="appt-row">
+      <div><strong>${b.name}</strong><div style="font-size:12px;color:var(--text-soft)">${(b.services||[b.service]).join(", ")} · ${b.date} ${b.slot} · ${b.phone}</div></div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <span class="status-tag ${b.status}">${b.status}</span>
+        ${b.status==="pending" ? `<button class="btn btn-ghost btn-sm confirm-b" data-id="${b.id}">Confirm</button>`:""}
+        ${b.status!=="cancelled" && b.status!=="completed" ? `<button class="btn btn-ghost btn-sm complete-b" data-id="${b.id}">Complete</button>`:""}
+        ${b.status!=="cancelled" ? `<button class="btn btn-ghost btn-sm cancelAdmin-b" data-id="${b.id}">Cancel</button>`:""}
+      </div>
+    </div>`).join("");
+  list.querySelectorAll(".confirm-b").forEach(b=>b.addEventListener("click",()=>updateBookingStatus(b.dataset.id,"confirmed")));
+  list.querySelectorAll(".complete-b").forEach(b=>b.addEventListener("click",()=>updateBookingStatus(b.dataset.id,"completed")));
+  list.querySelectorAll(".cancelAdmin-b").forEach(b=>b.addEventListener("click",()=>updateBookingStatus(b.dataset.id,"cancelled")));
+}
+function updateBookingStatus(id, status){
+  const all = getBookings();
+  const b = all.find(x=>x.id===id);
+  if(b){ b.status = status; saveBookings(all); refreshAdminStats(); if(currentEmail) renderDashboard(currentEmail); }
+}
+refreshAdminStats();
+
+/* ============ MISC ============ */
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("newsletterBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+  e.target.textContent = "Joined ✓";
+  setTimeout(()=>{ e.target.textContent = "Join"; }, 2000);
+});
+document.getElementById("contactSendBtn").addEventListener("click", () => {
+  const name = document.getElementById("cName").value.trim();
+  const msg = document.getElementById("cMsg").value.trim();
+  if(!name || !msg) return;
+  document.getElementById("contactSendBtn").textContent = "Message sent ✓";
+  document.getElementById("cName").value = "";
+  document.getElementById("cMsg").value = "";
+  setTimeout(()=>{ document.getElementById("contactSendBtn").textContent = "Send Message"; }, 2500);
+});
+
+})();
+</script>
+</body>
+</html>
